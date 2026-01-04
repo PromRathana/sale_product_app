@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sale_product_app/features/authentication/view_model/login_view_model.dart';
@@ -74,7 +76,15 @@ class LoginView extends StatelessWidget {
                   labelText: "password",
                   hintText: "Enter your password",
                   prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
+                  obscureText: loginViewModel.visiblePassword.value,
+                  suffixIcon: GestureDetector(
+                    onTap: loginViewModel.visiblePassword.toggle,
+                    child: Icon(
+                      loginViewModel.visiblePassword.value
+                          ? Icons.remove_red_eye
+                          : Icons.remove_red_eye_outlined,
+                    ),
+                  ),
                   controller: loginViewModel.passwordController.value,
                   onChanged: (value) {
                     loginViewModel.onChangeInputUsername(value);

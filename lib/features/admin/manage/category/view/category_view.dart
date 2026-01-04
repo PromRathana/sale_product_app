@@ -91,84 +91,9 @@ class CategoryView extends StatelessWidget {
                                   // ),
                                   IconButton(
                                     onPressed: () {
-                                      var viewModel =
-                                          Get.find<
-                                            CategoryViewModel
-                                          >(); // Ensure viewModel is accessed correctly if not already in scope
-
-                                      Get.defaultDialog(
-                                        title: "Delete Category",
-                                        titleStyle: const TextStyle(
-                                          color: Colors.red, // Title stands out
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                        middleText:
-                                            "Are you sure you want to permanently delete the category: ${category.name}?",
-                                        middleTextStyle: const TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black,
-                                        ),
-                                        backgroundColor: Colors.white,
-                                        radius:
-                                            12.0, // Rounded corners for a modern look
-                                        // --- Confirmation Button (Styled) ---
-                                        confirm: ElevatedButton(
-                                          onPressed: () {
-                                            viewModel.deleteCategory(category);
-                                            Get.back(); // Close dialog
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors
-                                                .red, // Delete action is clearly red
-                                            foregroundColor: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 20,
-                                              vertical: 10,
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            "Delete",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-
-                                        // --- Cancel Button (Styled) ---
-                                        cancel: OutlinedButton(
-                                          onPressed: () =>
-                                              Get.back(), // Close dialog
-                                          style: OutlinedButton.styleFrom(
-                                            backgroundColor: Colors.blue,
-                                            foregroundColor: Colors
-                                                .white, // Neutral color for cancel
-                                            side: const BorderSide(
-                                              color: Colors.blue,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 20,
-                                              vertical: 10,
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            "Cancel",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ),
-                                      );
+                                      viewModel.onConfirmDeleteCategory(category);
                                     },
-                                    icon: const Icon(
+                                    icon: Icon(
                                       Icons.delete,
                                       color: Colors.red,
                                     ),

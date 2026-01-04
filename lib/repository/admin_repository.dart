@@ -7,4 +7,5 @@ abstract class AdminCategoryRepository {
   Future<AppBaseResponse> getCategoryById (int id);
   Future<AppBaseResponse> updateCategory(CategoryModel req);
   Future<AppBaseResponse> deleteCategory(CategoryModel req);
+  Future<AppBaseResponse> getAllProducts();
 }

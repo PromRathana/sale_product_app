@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 class InputCustomWidget extends StatelessWidget {
   ValueChanged<String>? onChanged;
   TextEditingController? controller;
-  Icon? prefixIcon, suffixIcon;
+  // Icon? prefixIcon, suffixIcon;
+  Widget? prefixIcon, suffixIcon;
   String? labelText, hintText;
+  bool obscureText;
   InputCustomWidget({
     super.key,
     this.onChanged,
@@ -14,13 +16,15 @@ class InputCustomWidget extends StatelessWidget {
     this.labelText,
     this.prefixIcon,
     this.suffixIcon,
+    this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16,vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: TextField(
+        obscureText: obscureText,
         onChanged: onChanged,
         controller: controller,
         keyboardType: TextInputType.text,

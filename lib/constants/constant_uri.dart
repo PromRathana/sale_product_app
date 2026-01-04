@@ -8,4 +8,6 @@ abstract class ConstantUri{
   static String adminCategoryGetByIdPath = "$baseUri/api/app/product/category/";
   static String adminCategoryUpdatePath = "$baseUri/api/app/product/category/update";
   static String adminCategoryDeletePath = "$baseUri/api/app/product/category/delete";
+
+  static String adminProductListPath = "$baseUri/api/app/product/list";
 }

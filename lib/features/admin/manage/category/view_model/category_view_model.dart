@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:sale_product_app/features/admin/manage/category/model/Category_model.dart';
-import 'package:sale_product_app/repository/admin_category_impl.dart';
+import 'package:sale_product_app/repository/admin_repository_impl.dart';
+import 'package:sale_product_app/utils/message_utils.dart';
 
 class CategoryViewModel extends GetxController {
-  var categoryRepository = AdminCategoryRepositoryImpl();
+  var categoryRepository = AdminRepositoryImpl();
   var categoryList = <CategoryModel>[].obs;
   var loading = false.obs;
 
@@ -37,18 +38,25 @@ class CategoryViewModel extends GetxController {
     }
   }
 
-  deleteCategory(CategoryModel req) async {
-    var response = await categoryRepository.deleteCategory(req);
+  onDeleteCategory(CategoryModel category) async {
+    var response = await categoryRepository.deleteCategory(category);
     if (response.data != null) {
-      // Logic for successful deletion:
-      // 1. Show a success message (optional)
-      // 2. Refresh the list to update the UI
       await getAllCategories();
     } else {
-      // Logic for failed deletion:
-      // 1. Show an error message (optional)
     }
   }
-
-
+  onConfirmDeleteCategory(CategoryModel category)
+  {
+    MessageUtil.confirmMessageDialog(
+      title: "Delete Category",
+      middleText: "Do you want to delete ${category.name} ?",
+      textConfirm: 'Confirm',
+      textCancel: 'Cancel',
+      onConfirm: (){
+        onDeleteCategory(category);
+        Get.back();
+      },
+      onCancel: () => print('Canceled'),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sale_product_app/constants/app_routes.dart';
 import 'package:sale_product_app/features/admin/manage/category/view/category_form_view.dart';
 import 'package:sale_product_app/features/admin/manage/category/view/category_view.dart';
 import 'package:sale_product_app/features/admin/manage/product/view/product_view.dart';
@@ -15,22 +16,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: "/splash",
+      initialRoute: AppRoutes.splash,
       translations: Messages(),
       locale: Locale("km", "KH"),
       fallbackLocale: Locale("km", "KH"),
       getPages: [
         GetPage(
-          name: "/splash",
+          name: AppRoutes.home,
           page: () => SplashView(),
           transition: Transition.fadeIn,
         ),
-        GetPage(name: "/home", page: () => HomeView()),
-        GetPage(name: "/login", page: () => LoginView()),
-        GetPage(name: "/register", page: () => RegisterView()),
-        GetPage(name: "/admin/manage/category", page: () => CategoryView()),
-        GetPage(name: "/admin/manage/category/form", page: () => CategoryFormView()),
-        GetPage(name: "/admin/manage/product", page: () => ProductView()),
+        GetPage(name: AppRoutes.splash, page: () => HomeView()),
+        GetPage(name: AppRoutes.login, page: () => LoginView()),
+        GetPage(name: AppRoutes.register, page: () => RegisterView()),
+        GetPage(
+          name: AppRoutes.adminManageCategory,
+          page: () => CategoryView(),
+        ),
+        GetPage(
+          name: AppRoutes.adminManageCategoryForm,
+          page: () => CategoryFormView(),
+        ),
+        GetPage(name: AppRoutes.adminManageProduct, page: () => ProductView()),
       ],
     );
   }

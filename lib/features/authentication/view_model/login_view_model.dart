@@ -8,6 +8,7 @@ import 'package:sale_product_app/repository/authentication_repository_impl.dart'
 class LoginViewModel extends GetxController {
   var usernameController = TextEditingController().obs;
   var passwordController = TextEditingController().obs;
+  var visiblePassword = true.obs;
   var inputValueUsername = "".obs;
   var authenticationRepository = AuthenticationRepositoryImpl();
   var onloadingLogin = false.obs;

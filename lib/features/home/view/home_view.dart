@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sale_product_app/features/home/view_model/home_view_model.dart';
 
+import '../../../constants/app_routes.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -18,7 +20,7 @@ class HomeView extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Get.toNamed("/admin/manage/category");
+                Get.toNamed(AppRoutes.adminManageCategory);
               },
               leading: Icon(Icons.list_alt, color: Colors.white),
               title: Text(
@@ -33,7 +35,7 @@ class HomeView extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Get.toNamed("/admin/manage/product");
+                Get.toNamed(AppRoutes.adminManageProduct);
               },
               leading: Icon(Icons.list, color: Colors.white),
               title: Text(
@@ -94,7 +96,8 @@ class HomeView extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed("/login");
+                        // Get.toNamed("/login");
+                        homeViewModel.logoutAndLogin();
                       },
                       child: Text(
                         homeViewModel.user.value.username == ""

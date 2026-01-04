@@ -4,10 +4,10 @@ import 'package:sale_product_app/constants/constant_uri.dart';
 import 'package:sale_product_app/features/admin/manage/category/model/Category_model.dart';
 import 'package:sale_product_app/models/request/Api_base_request.dart';
 import 'package:sale_product_app/models/response/App_base_response.dart';
-import 'package:sale_product_app/repository/admin_category_repository.dart';
+import 'package:sale_product_app/repository/admin_repository.dart';
 import 'package:sale_product_app/service/api_remote_service_impl.dart';
 
-class AdminCategoryRepositoryImpl implements AdminCategoryRepository {
+class AdminRepositoryImpl implements AdminCategoryRepository {
   var apiService = ApiRemoteServiceImpl();
   @override
   Future<AppBaseResponse> getAllCategories() async {
@@ -67,6 +67,19 @@ class AdminCategoryRepositoryImpl implements AdminCategoryRepository {
     var response = await apiService.postApiToken(
       url: ConstantUri.adminCategoryDeletePath,
       requestBody: jsonEncode(req.toJson()),
+    );
+    if (response.isSuccess == true) {
+      appBaseResponse = AppBaseResponse.fromJson(jsonDecode(response.data));
+    }
+    return appBaseResponse;
+  }
+
+  @override
+  Future<AppBaseResponse> getAllProducts() async {
+    AppBaseResponse appBaseResponse = AppBaseResponse();
+    var response = await apiService.postApiToken(
+      url: ConstantUri.adminProductListPath,
+      requestBody: jsonEncode(ApiBaseRequest().toJson()),
     );
     if (response.isSuccess == true) {
       appBaseResponse = AppBaseResponse.fromJson(jsonDecode(response.data));

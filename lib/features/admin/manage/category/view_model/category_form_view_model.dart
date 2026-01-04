@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sale_product_app/features/admin/manage/category/model/Category_model.dart';
 import 'package:sale_product_app/models/response/App_base_response.dart';
-import 'package:sale_product_app/repository/admin_category_impl.dart';
+import 'package:sale_product_app/repository/admin_repository_impl.dart';
 import 'package:sale_product_app/utils/message_utils.dart';
 
 class CategoryFormViewModel extends GetxController {
   var categoryController = TextEditingController().obs;
   var categoryModel = CategoryModel().obs;
   var loading = false.obs;
-  var categoryRepo = AdminCategoryRepositoryImpl();
+  var categoryRepo = AdminRepositoryImpl();
 
   @override
   void onInit() {

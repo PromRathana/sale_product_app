@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sale_product_app/constants/app_routes.dart';
 import 'package:sale_product_app/features/splash/model/splash_model.dart';
 
 class SplashViewModel extends GetxController {
@@ -16,7 +17,7 @@ class SplashViewModel extends GetxController {
   }
 
   setTimeSplash() async {
-    await Future.delayed(Duration(seconds: 5));
-    Get.offNamed("/home");
+    await Future.delayed(Duration(seconds: 1));
+    Get.offNamed(AppRoutes.home);
   }
 }
